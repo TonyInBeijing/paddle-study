@@ -1,0 +1,106 @@
+import numpy as np
+
+a = np.array([1, 2, 3, 4])
+b = np.array([10, 20, 30, 40])
+c = a + b
+print(c)
+
+# 创建 ndarray 数组
+
+# 从 list 创建 array
+
+a = [1, 2, 3, 4, 5, 6]
+b = np.array(a)
+print(b)
+
+# arange 创建元素从0到10依次递增2的数组
+a = np.arange(0, 10, 2)
+print(a)
+
+# 创建指定长度或形状全0的数组
+a = np.zeros([3, 3])
+print(a)
+
+# 创建指定长度或形状的全1数组
+a = np.ones([3, 3])
+print(a)
+
+# 查看 ndarray 数组的属性
+# shape: 数组的形状 ndarray.shape, 一维数组(N,),二维数组(M,N),三维数组(M,N,K)
+# dtype: 数组的数据类型
+# size: 数组的中包含的元素个数 ndarray.size，其大小等于各个维度的长度的乘积
+# ndim: 数组的维度大小, ndarray.ndim 其大小等于 ndarray.shape 所包含的元素的个数
+
+a = np.ones([3, 3])
+print('a,dtype: {},shape: {},size: {},ndim: {}'.format(
+    a.dtype, a.shape, a.size, a.ndim))
+
+# 改变 ndarray 数组的数据类型和形状
+
+# 转化数据类型
+b = a.astype(np.int64)
+print('b,dtype: {},shape:{}'.format(b.dtype, b.shape))
+
+# 改变形状
+c = a.reshape([1, 9])
+print('c,dtype: {},shape:{}'.format(c.dtype, c.shape))
+
+# ndarray数组的基本运算
+
+# 标量和 ndarray 数组之间的运算
+
+arr = np.array([[1., 2., 3.], [4., 5., 6.]])
+print(1. / arr)
+
+# 两个 ndarray 数组之间的运算
+
+arr1 = np.array([[1., 2., 3.], [4., 5., 6., ]])
+arr2 = np.array([[11., 12., 13.], [21., 22., 23.]])
+
+print(arr2 - arr1)
+
+# ndarray 数组的索引和切片
+a = np.arange(30)
+print(a)
+b = a[4:7]
+print(b)
+
+# 将一个标量值赋值给一个切片时，该值会自动传播到整个选区
+a = np.arange(30)
+a[4:7] = 10
+print(a)
+
+# 数组切片产生的新数组，还是指向原来的内存区域，数据不会被复制
+# 视图上的任何修改都会直接反映到源数组上
+a = np.arange(30)
+arr_slice = a[4:7]
+arr_slice[0] = 100
+print(a, arr_slice)
+
+# 通过 copy 给新数组创建不同的内存空间
+a = np.arange(30)
+arr_slice = a[4:7]
+arr_slice = np.copy(arr_slice)
+arr_slice[0] = 100
+print(a, arr_slice)
+
+# 多维 ndarray 数组的索引和切片
+
+# 在多维数组中，各索引位置上的元素不再是标量而是多维数组
+# 以逗号隔开的索引列表来选取单个元素
+# 在多维数组中，如果省略了后面的索引，则返回对象会是一个维度低一点的 ndarray
+
+a = np.arange(30)
+arr3d = a.reshape(5, 3, 2)
+print(arr3d)
+print(arr3d[0])
+print(arr3d[0][1])
+
+# 使用 for 语句生成 list
+print([k for k in range(0, 6, 2)])
+
+a = np.arange(24)
+a = a.reshape([6, 4])
+print("a::", a)
+slices = [a[k:k+2] for k in range(0, 6, 2)]
+print("slices::", slices)
