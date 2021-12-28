@@ -104,3 +104,60 @@ a = a.reshape([6, 4])
 print("a::", a)
 slices = [a[k:k+2] for k in range(0, 6, 2)]
 print("slices::", slices)
+
+## ndarray 数组的统计方法
+
+# mean 计算算术平均数
+arr = np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(arr.mean(),arr.dtype)
+
+# 求和
+print(arr.sum())
+
+# 求最大值
+print(arr.max())
+
+# 求最小值
+print(arr.min())
+
+# 指定计算的维度
+
+# 沿着第一维求平均
+print(arr.mean(axis = 1))
+# 沿着第0维求最大值（第0维指矩阵的每一列）
+print(arr.max(axis = 0))
+# 沿着第1维求最小值
+print(arr.min(axis = 1))
+# 计算标准差
+print(arr.std())
+# 计算方差
+print(arr.var())
+# 找出最大元素的索引
+print(arr.argmax(),arr.argmax(axis = 0),arr.argmax(axis = 1))
+
+## 随机数 np.random
+
+# 设置随机种子
+# np.random.seed(10)
+a = np.random.rand(3,3)
+print(a)
+
+# 均匀分布
+a = np.random.rand(3,3)
+print(a)
+# 生成均匀分布随机数，指定随机数取值范围和数组形状
+a = np.random.uniform(low = -1.0,high = 1.0,size=(2,2))
+print(a)
+# 正态分布
+a = np.random.randn(3,3)
+print(a)
+
+## 随机打乱 ndarray 数组顺序
+a = np.arange(0,30)
+np.random.shuffle(a)
+print(a)
+
+## 随机选取部分元素
+a = np.arange(30)
+b = np.random.choice(a,size = 5)
+print(b)
